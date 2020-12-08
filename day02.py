@@ -1,5 +1,5 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
-# Solutions for https://adventofcode.com/2019/day/1
+# Solutions for https://adventofcode.com/2020/day/2
 
 from collections import Counter
 from os import path

@@ -1,5 +1,5 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
-# Solutions for https://adventofcode.com/2019/day/1
+# Solutions for https://adventofcode.com/2020/day/1
 
 from itertools import combinations
 from os import path
