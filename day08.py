@@ -1,11 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/8
 
-from os import path
-from pathlib import Path
-
-CURDIR = str(Path(path.abspath(__file__)).parent)
-
+from AdventOfCode.input_loader import load_input
 
 class Console:
 
@@ -61,30 +57,20 @@ def parse_instruction(instr):
 
 
 def problem1_solution():
-    with open(path.join(CURDIR, 'inputs', f'day08_1.txt'), 'r') as input1:
-        instructions = {
-            n: parse_instruction(i)
-            for n, i in enumerate(input1.readlines(), 1)
-        }
-    console = Console(instructions)
+    prog = {n: parse_instruction(i) for n, i in enumerate(load_input(8, 1), 1)}
+    console = Console(prog)
     console.run()
     return console.accumulator if console.stop == 300 else "Solution not found"
 
 
 def problem2_solution():
-    with open(path.join(CURDIR, 'inputs', f'day08_2.txt'), 'r') as input2:
-        instructions = {
-            n: parse_instruction(i)
-            for n, i in enumerate(input2.readlines(), 1)
-        }
-    for patch in [
-        (n, 'jmp' if o == 'nop' else 'nop', v)
-        for n, (o, v) in instructions.items()
-        if o in ('jmp', 'nop')
-    ]:
-        n, o, v = patch
-        patched_instructions = instructions.copy()
-        patched_instructions[n] = (o, v)
+    prog = {n: parse_instruction(i) for n, i in enumerate(load_input(8, 2), 1)}
+    for num, (op, val) in prog.items():
+        op = {'nop': 'jmp', 'jmp': 'nop'}.get(op)
+        if not op:
+            continue
+        patched_instructions = prog.copy()
+        patched_instructions[num] = (op, val)
         console = Console(patched_instructions)
         console.run()
         if console.stop == 100:

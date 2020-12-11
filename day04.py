@@ -1,11 +1,9 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/4
 
-from os import path
-from pathlib import Path
 from string import digits, hexdigits
 
-CURDIR = str(Path(path.abspath(__file__)).parent)
+from AdventOfCode.input_loader import load_input
 
 
 def validate_byr(byr):
@@ -99,23 +97,21 @@ def has_all_valid_fields(pdict):
     )
 
 
-def passport_dict(passport_as_string):
-    return dict(
-        d.split(':')
-        for d in passport_as_string.replace('\n', ' ').split(' ')
+def convert2passports(raw_passport_input):
+    return tuple(
+        dict([s.split(':') for s in p_str.replace('\n', ' ').split(' ')])
+        for p_str in ''.join(raw_passport_input).split('\n\n')
     )
 
 
 def problem1_solution():
-    with open(path.join(CURDIR, 'inputs', f'day04_1.txt'), 'r') as input1:
-        plist = tuple(map(passport_dict, input1.read().split('\n\n')))
-    return len(tuple(filter(has_all_mandatory_fields, plist)))
+    passports = convert2passports(load_input(4, 1))
+    return len(tuple(filter(has_all_mandatory_fields, passports)))
 
 
 def problem2_solution():
-    with open(path.join(CURDIR, 'inputs', f'day04_2.txt'), 'r') as input2:
-        plist = tuple(map(passport_dict, input2.read().split('\n\n')))
-    return len(tuple(filter(has_all_valid_fields, plist)))
+    passports = convert2passports(load_input(4, 2))
+    return len(tuple(filter(has_all_valid_fields, passports)))
 
 
 if __name__ == '__main__':

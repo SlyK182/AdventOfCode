@@ -2,10 +2,8 @@
 # Solutions for https://adventofcode.com/2020/day/2
 
 from collections import Counter
-from os import path
-from pathlib import Path
 
-CURDIR = str(Path(path.abspath(__file__)).parent)
+from AdventOfCode.input_loader import load_input
 
 
 def get_params(line):
@@ -16,20 +14,18 @@ def get_params(line):
 
 def problem1_solution():
     count = 0
-    with open(path.join(CURDIR, 'inputs', f'day02_1.txt'), 'r') as input1:
-        for n1, n2, char, pword in tuple(map(get_params, input1.readlines())):
-            if n1 <= Counter(pword).get(char, 0) <= n2:
-                count += 1
+    for n1, n2, char, pword in tuple(map(get_params, load_input(2, 1))):
+        if n1 <= Counter(pword).get(char, 0) <= n2:
+            count += 1
     return count or "Solution not found."
 
 
 def problem2_solution():
     count = 0
-    with open(path.join(CURDIR, 'inputs', f'day02_2.txt'), 'r') as input2:
-        for i1, i2, char, pword in tuple(map(get_params, input2.readlines())):
-            char = char[0]
-            if (char == pword[i1 - 1]) != (char == pword[i2 - 1]):
-                count += 1
+    for i1, i2, char, pword in tuple(map(get_params, load_input(2, 2))):
+        char = char[0]
+        if (char == pword[i1 - 1]) != (char == pword[i2 - 1]):
+            count += 1
     return count or "Solution not found."
 
 

@@ -1,5 +1,8 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 
+from . import input_loader
+from . import solutions
+
 from . import day01
 from . import day02
 from . import day03

@@ -1,10 +1,8 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/3
 
-from os import path
-from pathlib import Path
+from AdventOfCode.input_loader import load_input
 
-CURDIR = str(Path(path.abspath(__file__)).parent)
 OPEN = '.'
 TREE = '#'
 
@@ -22,17 +20,15 @@ def tree_counter(data, **deltas):
 
 
 def problem1_solution():
-    with open(path.join(CURDIR, 'inputs', f'day03_1.txt'), 'r') as input1:
-        data = dict(enumerate(map(lambda l: l.strip(), input1.readlines())))
+    data = dict(enumerate(map(lambda l: l.strip(), load_input(3, 1))))
     return tree_counter(data, x=3, y=1) or "Solution not found."
 
 
 def problem2_solution():
+    data = dict(enumerate(map(lambda l: l.strip(), load_input(3, 2))))
     res = 1
-    with open(path.join(CURDIR, 'inputs', f'day03_2.txt'), 'r') as input2:
-        data = dict(enumerate(map(lambda l: l.strip(), input2.readlines())))
-        for x, y in [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]:
-            res *= tree_counter(data, x=x, y=y)
+    for x, y in [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)]:
+        res *= tree_counter(data, x=x, y=y)
     return res or "Solution not found."
 
 

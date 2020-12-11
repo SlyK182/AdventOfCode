@@ -1,10 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/5
 
-from os import path
-from pathlib import Path
-
-CURDIR = str(Path(path.abspath(__file__)).parent)
+from AdventOfCode.input_loader import load_input
 
 
 def binary_to_decimal(b):
@@ -23,15 +20,11 @@ def compute_seat_id(ticket):
 
 
 def problem1_solution():
-    with open(path.join(CURDIR, 'inputs', f'day05_1.txt'), 'r') as input1:
-        seats_list = input1.read().split('\n')
-    return max([compute_seat_id(seat) for seat in seats_list])
+    return max([compute_seat_id(t.strip()) for t in load_input(5, 1)])
 
 
 def problem2_solution():
-    with open(path.join(CURDIR, 'inputs', f'day05_2.txt'), 'r') as input2:
-        seats_list = input2.read().split('\n')
-    seat_ids = [compute_seat_id(seat) for seat in seats_list]
+    seat_ids = [compute_seat_id(t.strip()) for t in load_input(5, 2)]
     seat_ids.sort()
     for x in range(len(seat_ids) - 1):
         if seat_ids[x + 1] - seat_ids[x] == 2:

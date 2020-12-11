@@ -1,11 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/6
 
-from os import path
-from pathlib import Path
-
-CURDIR = str(Path(path.abspath(__file__)).parent)
-
+from AdventOfCode.input_loader import load_input
 
 def answer_count(groups, mode):
     if mode == 'any':
@@ -25,14 +21,12 @@ def answer_count(groups, mode):
 
 
 def problem1_solution():
-    with open(path.join(CURDIR, 'inputs', f'day06_1.txt'), 'r') as input1:
-        gs = tuple(map(lambda x: x.split('\n'), input1.read().split('\n\n')))
+    gs = tuple(g.split('\n') for g in ''.join(load_input(6, 1)).split('\n\n'))
     return answer_count(gs, 'any')
 
 
 def problem2_solution():
-    with open(path.join(CURDIR, 'inputs', f'day06_2.txt'), 'r') as input2:
-        gs = tuple(map(lambda x: x.split('\n'), input2.read().split('\n\n')))
+    gs = tuple(g.split('\n') for g in ''.join(load_input(6, 2)).split('\n\n'))
     return answer_count(gs, 'all')
 
 
