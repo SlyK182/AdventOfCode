@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/9
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 # Problem 2 requires to find a series of consecutive numbers that
 # add up to Problem 1 solution, so we'll put the solution in a global variable
@@ -10,6 +10,7 @@ from AdventOfCode.input_loader import load_input
 P1_SOL = 0
 
 
+@timer
 def problem1_solution():
     data = tuple(map(int, load_input(9, 1)))
     for x in range(25, len(data) + 1):
@@ -22,6 +23,7 @@ def problem1_solution():
     return "Solution not found"
 
 
+@timer
 def problem2_solution():
     data = tuple(map(int, load_input(9, 2)))
     for y in range(2, len(data) + 1):

@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/8
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 class Console:
 
@@ -56,6 +56,7 @@ def parse_instruction(instr):
     return o, (1 if v[0] == '+' else -1) * int(v[1:])
 
 
+@timer
 def problem1_solution():
     prog = {n: parse_instruction(i) for n, i in enumerate(load_input(8, 1), 1)}
     console = Console(prog)
@@ -63,6 +64,7 @@ def problem1_solution():
     return console.accumulator if console.stop == 300 else "Solution not found"
 
 
+@timer
 def problem2_solution():
     prog = {n: parse_instruction(i) for n, i in enumerate(load_input(8, 2), 1)}
     for num, (op, val) in prog.items():

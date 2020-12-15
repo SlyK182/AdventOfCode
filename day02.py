@@ -3,7 +3,7 @@
 
 from collections import Counter
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def get_params(line):
@@ -12,6 +12,7 @@ def get_params(line):
     return n0, n1, l[0], p
 
 
+@timer
 def problem1_solution():
     count = 0
     for n1, n2, char, pword in tuple(map(get_params, load_input(2, 1))):
@@ -20,6 +21,7 @@ def problem1_solution():
     return count or "Solution not found."
 
 
+@timer
 def problem2_solution():
     count = 0
     for i1, i2, char, pword in tuple(map(get_params, load_input(2, 2))):

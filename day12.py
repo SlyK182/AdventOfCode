@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/12
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def run_ship(commands):
@@ -67,11 +67,13 @@ def run_with_waypoint(commands):
     return x, y
 
 
+@timer
 def problem1_solution():
     x, y = run_ship(list(map(lambda x: x.strip(), load_input(12, 1))))
     return abs(x) + abs(y)
 
 
+@timer
 def problem2_solution():
     x, y = run_with_waypoint(list(map(lambda x: x.strip(), load_input(12, 2))))
     return abs(x) + abs(y)

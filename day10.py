@@ -3,7 +3,7 @@
 
 from collections import Counter
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def get_arrangements(jolts):
@@ -23,14 +23,15 @@ def get_jumps(jolts):
     return Counter([jolts[x+1] - jolts[x] for x in range(len(jolts) - 1)])
 
 
+@timer
 def problem1_solution():
     jumps = get_jumps(list(map(int, load_input(10, 1))))
-    return jumps[1] * jumps[3] or "Solution not found"
+    return jumps[1] * jumps[3]
 
 
+@timer
 def problem2_solution():
-    return get_arrangements(list(map(int, load_input(10, 2)))) \
-        or "Solution not found"
+    return get_arrangements(list(map(int, load_input(10, 2))))
 
 
 if __name__ == '__main__':

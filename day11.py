@@ -3,7 +3,7 @@
 
 from itertools import product
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def evolve_map(old, mode):
@@ -55,6 +55,7 @@ def get_occupied_seats(seat_map, row, col, mode):
     return occupied
 
 
+@timer
 def problem1_solution():
     old_map = {}
     new_map = get_seat_map(load_input(11, 1))
@@ -63,6 +64,7 @@ def problem1_solution():
     return len([s for s in new_map.values() if s['type'] == '#'])
 
 
+@timer
 def problem2_solution():
     old_map = {}
     new_map = get_seat_map(load_input(11, 2))

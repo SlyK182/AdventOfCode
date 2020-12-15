@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/3
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 OPEN = '.'
 TREE = '#'
@@ -19,11 +19,13 @@ def tree_counter(data, **deltas):
     return count
 
 
+@timer
 def problem1_solution():
     data = dict(enumerate(map(lambda l: l.strip(), load_input(3, 1))))
     return tree_counter(data, x=3, y=1) or "Solution not found."
 
 
+@timer
 def problem2_solution():
     data = dict(enumerate(map(lambda l: l.strip(), load_input(3, 2))))
     res = 1

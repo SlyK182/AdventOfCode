@@ -3,7 +3,7 @@
 
 from itertools import product
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def binarystr_to_decimalstr(b):
@@ -20,6 +20,7 @@ def decimalstr_to_binarystr(d):
     return ''.join(n)
 
 
+@timer
 def problem1_solution():
     mask = ''
     mem = {}
@@ -38,6 +39,7 @@ def problem1_solution():
     return sum([int(v) for v in mem.values()])
 
 
+@timer
 def problem2_solution():
     mask = ''
     mem = {}

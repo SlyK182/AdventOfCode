@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/5
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def binary_to_decimal(b):
@@ -19,10 +19,12 @@ def compute_seat_id(ticket):
     return int(row * 8 + column)
 
 
+@timer
 def problem1_solution():
     return max([compute_seat_id(t.strip()) for t in load_input(5, 1)])
 
 
+@timer
 def problem2_solution():
     seat_ids = [compute_seat_id(t.strip()) for t in load_input(5, 2)]
     seat_ids.sort()

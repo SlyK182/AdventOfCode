@@ -1,7 +1,8 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/6
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
+
 
 def answer_count(groups, mode):
     if mode == 'any':
@@ -20,11 +21,13 @@ def answer_count(groups, mode):
     raise ValueError(f"Invalid mode '{mode}'")
 
 
+@timer
 def problem1_solution():
     gs = tuple(g.split('\n') for g in ''.join(load_input(6, 1)).split('\n\n'))
     return answer_count(gs, 'any')
 
 
+@timer
 def problem2_solution():
     gs = tuple(g.split('\n') for g in ''.join(load_input(6, 2)).split('\n\n'))
     return answer_count(gs, 'all')

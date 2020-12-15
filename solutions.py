@@ -1,6 +1,9 @@
 # Author: Silvio Gregorini (silviogregorini@openforce.it)
 
+from AdventOfCode.common import timer
 
+
+@timer
 def main():
     from os import path
     from pathlib import Path

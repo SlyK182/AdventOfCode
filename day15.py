@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/15
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def memory(nums, end):
@@ -14,10 +14,12 @@ def memory(nums, end):
     return spkn
 
 
+@timer
 def problem1_solution():
     return memory(list(map(int, load_input(15, 1)[0].split(','))), 2020)
 
 
+@timer
 def problem2_solution():
     return memory(list(map(int, load_input(15, 2)[0].split(','))), 30000000)
 

@@ -3,7 +3,7 @@
 
 from string import digits, hexdigits
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
 def validate_byr(byr):
@@ -104,11 +104,13 @@ def convert2passports(raw_passport_input):
     )
 
 
+@timer
 def problem1_solution():
     passports = convert2passports(load_input(4, 1))
     return len(tuple(filter(has_all_mandatory_fields, passports)))
 
 
+@timer
 def problem2_solution():
     passports = convert2passports(load_input(4, 2))
     return len(tuple(filter(has_all_valid_fields, passports)))

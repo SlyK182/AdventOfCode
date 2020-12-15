@@ -1,9 +1,10 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/13
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
+@timer
 def problem1_solution():
     data = load_input(13, 1)
     ts = int(data[0])
@@ -18,6 +19,7 @@ def problem1_solution():
     return earliest_bus_id * min_wait_time
 
 
+@timer
 def problem2_solution():
     data = load_input(13, 2)
     bus_ids = [int(i) if i != 'x' else i for i in data[1].strip().split(',')]

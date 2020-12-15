@@ -1,6 +1,6 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 
-from . import input_loader
+from . import common
 from . import solutions
 
 from . import day01

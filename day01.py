@@ -3,9 +3,10 @@
 
 from itertools import combinations
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 
+@timer
 def problem1_solution():
     data = tuple(map(int, load_input(1, 1)))
     for num1 in data:
@@ -15,6 +16,7 @@ def problem1_solution():
     return "Solution not found."
 
 
+@timer
 def problem2_solution():
     data = tuple(map(int, load_input(1, 2)))
     for num1, num2 in combinations(data, 2):

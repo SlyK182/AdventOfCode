@@ -1,7 +1,7 @@
 # Author: ComradeSlyK (gregorini.silvio@gmail.com)
 # Solutions for https://adventofcode.com/2020/day/7
 
-from AdventOfCode.input_loader import load_input
+from AdventOfCode.common import load_input, timer
 
 EMPTY = 'no other bags'
 MY_COLOR = 'shiny gold'
@@ -42,12 +42,14 @@ def normalize_color(color):
     return color.lower().strip()
 
 
+@timer
 def problem1_solution():
     policies = tuple(map(lambda x: x.strip(), load_input(7, 1)))
     cmap = map_policies_to_colors(policies)
     return len([c for c in cmap if contains_color(cmap, c, MY_COLOR)])
 
 
+@timer
 def problem2_solution():
     policies = tuple(map(lambda x: x.strip(), load_input(7, 2)))
     cmap = map_policies_to_colors(policies)
