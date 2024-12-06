@@ -1,9 +1,9 @@
-from .day01 import main as day01_main
-from .day02 import main as day02_main
-from .day03 import main as day03_main
+from importlib import import_module
+from pathlib import Path
+from re import match
 
 
 def main():
-    day01_main()
-    day02_main()
-    day03_main()
+    for fpath in sorted(Path(__file__).parent.iterdir(), key=lambda p: p.name):
+        if match(r"^day\d{2}\.py", fpath.name):
+            import_module(f".{fpath.name[:-3]}", package=__name__).main()
