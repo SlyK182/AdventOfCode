@@ -3,7 +3,7 @@ from collections import defaultdict
 from ..utils.common import load_input, timer
 
 # We can handle the input as a matrix
-MATRIX = tuple(load_input(4, 1))
+MATRIX = tuple(load_input(4))
 
 
 @timer

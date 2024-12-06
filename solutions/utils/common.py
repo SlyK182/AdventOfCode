@@ -10,8 +10,11 @@ INPUTS_DIR = SOLUTIONS_DIR / "inputs"
 UTILS_DIR = SOLUTIONS_DIR / "utils"
 
 
-def load_input(day: int, num: int):
-    with open(INPUTS_DIR.joinpath(f"day{str(day).zfill(2)}_{num}.txt"), "r") as f:
+def load_input(day: int, num: int = None):
+    input_fname = f"day{str(day).zfill(2)}"
+    if num is not None:
+        input_fname = f"{input_fname}_{num}"
+    with open(INPUTS_DIR.joinpath(f"{input_fname}.txt"), "r") as f:
         yield from map(str.strip, f.readlines())
 
 

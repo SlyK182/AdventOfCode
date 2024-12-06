@@ -4,7 +4,7 @@ from ..utils.common import load_input, timer
 
 
 LVALUES, RVALUES = [], []
-for row in load_input(1, 1):
+for row in load_input(1):
     for lst, vl in zip((LVALUES, RVALUES), map(int, row.strip().split())):
         lst.append(vl)
 

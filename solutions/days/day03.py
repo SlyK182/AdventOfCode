@@ -2,7 +2,7 @@ import re
 
 from ..utils.common import load_input, timer
 
-DATA = "".join(load_input(3, 1))
+DATA = "".join(load_input(3))
 
 
 @timer

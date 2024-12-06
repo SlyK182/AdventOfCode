@@ -17,7 +17,7 @@ def _is_safe(levels, retry: bool = False):
     return False
 
 
-REPORTS = tuple(map(lambda r: tuple(map(int, r.split())), load_input(2, 1)))
+REPORTS = tuple(map(lambda r: tuple(map(int, r.split())), load_input(2)))
 REPORTS_SAFETY = {r: (_is_safe(r), _is_safe(r, retry=True)) for r in REPORTS}
 
 
